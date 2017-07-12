@@ -41,7 +41,8 @@ public class ApiManager {
 
     private ApiService createService(){
         //手动创建一个OkHttpClient并设置超时时间
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .addInterceptor(new MyInterceptor());
         builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         Retrofit retrofit = new Retrofit.Builder()
